@@ -4,7 +4,11 @@
 
 <h2>An introduction to using text formatting within code</h2>
 <h3>Table of Contents</h3>
-<a href="/code/">
+<a href="/code/">Code</a>
+<a href="/data/">Data</a>
+<a href="/images/">Images</a>
+<a href="/references/">References</a>
+<a href="/module_projects/">Module Projects</a>
 
 My name is Eli, I'm currently a business analyst for PNC Bank.  I am a tech enthusiast and excited to continue learning more about the FinTech environment.
 
