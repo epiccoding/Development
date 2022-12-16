@@ -1,2 +1,2 @@
 # Bootcamp Projects
-[Module1CaseStudy](/project1/)
+[Module1CaseStudy](module_projects/project1/)
