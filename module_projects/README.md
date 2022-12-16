@@ -1,13 +1,13 @@
 ## Module1CaseStudy_RegTech
 
 ## Overview and Origin
-    '''
-    >Chainalysis, headquartered in New York City, was founded in 2014
+
+    > Chainalysis, headquartered in New York City, was founded in 2014
 
     > The company was originally formed in order to investigate the Mt. Gox cryptocurrency exchange hack and has continued to be used as a way to track crypto currency fraud
 
     > It would seem that Chanalysis acquires funding through a number of Series F finacing.  As recently as May 12,2022 they received 170 million in financing.  Resulting in a valuation of $8.6 billion (https://blog.chainalysis.com/reports/series-f/#:~:text=NEW%20YORK%2C%20May%2012%2C%202022,its%20valuation%20to%20%248.6%20billion.)
-    '''
+    
 ## Business Activities
     > This company is aiming to close the gap in blockchain analytics.  They are currently one of the most heavily funded regulation and compliance service companies in the market.
 
