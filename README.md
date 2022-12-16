@@ -1,14 +1,13 @@
-<h1>Bootcamp</h1>
+# Bootcamp
 
-<img src="/images/fintechlogo.png">
+![FinTech Bootcamp](/images/fintechlogo.png)
 
-<h2>An introduction to using text formatting within code</h2>
-<h3>Table of Contents</h3>
-<a href="/code/">Code</a>
-<a href="/data/">Data</a>
-<a href="/images/">Images</a>
-<a href="/references/">References</a>
-<a href="/module_projects/">Module Projects</a>
+## An introduction to using text formatting within code
+### Table of Contents
+
+[Code](/code/) | [Data](/data/) | [Images](/images/) | [References](/references/)
+
+[Module Projects](/module_projects/)
 
 My name is Eli, I'm currently a business analyst for PNC Bank.  I am a tech enthusiast and excited to continue learning more about the FinTech environment.
 
