@@ -1,6 +1,5 @@
 ## Module1CaseStudy_RegTech
 
-<br>
 
 ## Overview and Origin of Chainalysis
 
