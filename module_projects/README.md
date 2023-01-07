@@ -1,2 +1,3 @@
 # Bootcamp Projects
-[Module1CaseStudy](project1)
+[Module1:CaseStudy](project1)
+[Module2:PyBank & PyRamen](project2)
