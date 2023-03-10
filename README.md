@@ -2,10 +2,8 @@
 
 ![FinTech Bootcamp](/images/fintechlogo.png)
 
-## An introduction to using text formatting within code
 ### Table of Contents
 
-[Code](/code/) | [Data](/data/) | [Images](/images/) | [References](/references/)
 
 [Module Projects](/module_projects/)
 
