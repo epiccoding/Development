@@ -12,3 +12,5 @@
 [Moudle7: SQL](Module-7-SQL)
 
 [Module10: Unsupervised Learning](Module-10-Unsupervised_Learning)
+
+[Module11: Time Series](Module-11-Time_Series)
