@@ -14,3 +14,5 @@
 [Module10: Unsupervised Learning](Module-10-Unsupervised_Learning)
 
 [Module11: Time Series](Module-11-Time_Series)
+
+[Module12: Supervised Learning](Module-12-Supervised_Learning)
