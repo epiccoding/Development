@@ -18,3 +18,5 @@
 [Module12: Supervised Learning](Module-12-Supervised_Learning)
 
 [Module13: Neural Networks](Module-13-Neaural_Networks)
+
+[Module14: Algorithmic Trading](Module-14-Algorithmic_Trading)
