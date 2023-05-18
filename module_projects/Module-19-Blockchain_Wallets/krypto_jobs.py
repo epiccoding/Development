@@ -122,7 +122,7 @@ candidate_database = {
 people = ["Lane", "Ash", "Jo", "Kendall"]
 
 
-def get_people():
+def get_people(w3):
     """Display the database of KryptoJobs2Go candidate information."""
     db_list = list(candidate_database.values())
 
@@ -307,7 +307,7 @@ if st.sidebar.button("Send Transaction"):
 
 # The function that starts the Streamlit application
 # Writes KryptoJobs2Go candidates to the Streamlit page
-get_people()
+get_people(w3)
 
 ################################################################################
 # Step 3: Inspect the Transaction
