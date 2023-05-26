@@ -1,5 +1,3 @@
-# This is a comment, to show how #-prefixed lines are ignored.
-# It is possible to specify requirements as plain names.
-openbb
-pandas
-matplotlib
+openbb==3.0.1
+pandas==1.4.5
+matplotlib==3.5.1
