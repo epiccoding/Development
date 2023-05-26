@@ -1,8 +1,6 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-from datetime import date
-from datetime import datetime
 from openbb_terminal.sdk import openbb
 
 @st.cache_data
