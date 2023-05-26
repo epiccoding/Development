@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 from openbb_terminal.sdk import openbb
 
 @st.cache_data
@@ -30,6 +31,17 @@ def main():
 
     # If one selected then:
     if ticker:
+        chart_df = get_close(ticker)
+        if not chart_df.empty:
+            fig, ax = plt.subplots()
+            chart_df.plot(x='Date', y='Close', ax=ax)
+            ax.set_title(f"{ticker} 5 Year Close Price")
+            ax.set_xlabel("Date")
+            ax.set_ylabel("Close")
+            st.sidebar.pyplot(fig)
+        else:
+            st.sidebar.write("No close price to report")
+
         st.markdown(f"Fetching news for {ticker}...  While you wait, here is an inspirational quote:")
         st.markdown(f"""
             >You're only given a little spark of madness. You mustn't lose it. -**:blue[Robin Williams]**"""
