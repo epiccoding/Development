@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+from datetime import date
+from datetime import datetime
 from openbb_terminal.sdk import openbb
 
 @st.cache_data
@@ -17,7 +19,9 @@ def get_news(ticker):
 
 def get_close(ticker):
     # Grab closing price data
-    close = openbb.stocks.load(symbol=ticker)
+    end_date = pd.Timestamp(date.today()) + pd.DateOffset(days=1)
+    start_date = pd.Timestamp(date.today()) - pd.DateOffset(months=6) # Get a little bit extra in case of weekend
+    close = openbb.stocks.load(symbol=ticker, start_date=start_date, end_date=end_date)
     close_df = pd.DataFrame({'Date': close.index, 'Open': close['Open'], 'Close': close['Close']})
     close_df['Date'] = pd.to_datetime(close_df['Date']).dt.strftime('%Y-%m-%d')
     return close_df
@@ -34,11 +38,22 @@ def main():
         if not chart_df.empty:
             fig, ax = plt.subplots()
             chart_df.plot(x='Date', y='Close', ax=ax)
-            ax.set_title(f"{ticker} 5 Year Close Price")
+            ax.set_title(f"{ticker} 6 Month Close Price")
             ax.set_xlabel("Date")
             ax.set_ylabel("Close")
             st.sidebar.pyplot(fig)
+            current_price = chart_df['Close'].iloc[-1]
+            previous_price = chart_df['Close'].iloc[-2]
+            price_change = current_price - previous_price
 
+            if price_change > 0:
+                color = "green"
+            elif price_change < 0:
+                color = "red"
+            else:
+                color = "black"
+
+            st.sidebar.markdown(f"<span style='color:{color}; font-weight:bold;'>${current_price:.2f}</span>", unsafe_allow_html=True)
         else:
             st.sidebar.write("No close price to report")
 
