@@ -28,7 +28,6 @@ def main():
     # User input Ticker symbol here
     st.sidebar.markdown(":heavy_dollar_sign::heavy_dollar_sign::heavy_dollar_sign:")
     ticker = st.sidebar.text_input("Enter a Ticker Symbol")
-
     # If one selected then:
     if ticker:
         chart_df = get_close(ticker)
@@ -39,6 +38,7 @@ def main():
             ax.set_xlabel("Date")
             ax.set_ylabel("Close")
             st.sidebar.pyplot(fig)
+
         else:
             st.sidebar.write("No close price to report")
 
