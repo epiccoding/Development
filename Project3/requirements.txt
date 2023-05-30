@@ -1,5 +1,4 @@
 openbb[all]
-python = "^3.8,<3.11, !=3.9.7"
 scipy = "^1.9.3"
 iso8601 = "^0.1.14"
 FundamentalAnalysis = "^0.2.6"
