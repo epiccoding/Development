@@ -30,8 +30,7 @@ def get_close(ticker):
 def main():
     st.title("News App")
     # User input Ticker symbol here
-    st.sidebar.markdown(":heavy_dollar_sign::heavy_dollar_sign::heavy_dollar_sign:")
-    ticker = st.sidebar.text_input("Enter a Ticker Symbol")
+    ticker = st.sidebar.text_input(f"Enter a Ticker Symbol", value="AAPL")
     # If one selected then:
     if ticker:
         chart_df = get_close(ticker)
