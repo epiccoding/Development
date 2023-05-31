@@ -53,7 +53,7 @@ def main():
             else:
                 color = "black"
 
-            st.sidebar.markdown(f"<span style='color:{color}; font-weight:bold;'>${current_price:.2f}</span>", unsafe_allow_html=True)
+            st.sidebar.markdown(f"The current Close Price is: <span style='color:{color}; font-weight:bold;'>${current_price:.2f}</span>", unsafe_allow_html=True)
         else:
             st.sidebar.write("No close price to report")
 
