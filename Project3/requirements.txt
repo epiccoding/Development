@@ -65,7 +65,7 @@ papermill == 2.4
 stocksera == 0.1.21
 ipython
 protobuf == 3.20.1
-grpcio == 1.51.1
+grpcio == 1.51.0
 jupyterlab-widgets == 3.0.3
 mstarpy == 0.0.4
 packaging
