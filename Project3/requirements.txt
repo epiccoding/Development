@@ -74,8 +74,8 @@ streamlit == 1.22.0
 pywry == 0.5.8
 svglib == 1.5.0
 sparqlwrapper == 2.0.0
-y-py == !=0.5.5  # Untraceable third level dependency that requires cargo to be built
-psutil == !=5.9.4  # Forecasting menu and IPyKernel dependency broken on MacOs
+y-py  # Untraceable third level dependency that requires cargo to be built
+psutil  # Forecasting menu and IPyKernel dependency broken on MacOs
 intrinio-sdk == 6.22.2
 yahooquery == 2.3.0
 pydantic == 1.10.5
