@@ -80,5 +80,5 @@ intrinio-sdk == 6.22.2
 yahooquery == 2.3.0
 pydantic == 1.10.5
 posthog == 3.0.1
-reportlab == <4 #Pinning due to build error on MacOs
+reportlab #Pinning due to build error on MacOs
 arch == 5.5.0
