@@ -69,7 +69,7 @@ protobuf == 3.20.1
 grpcio == 1.51.1
 jupyterlab-widgets == 3.0.3
 mstarpy == 0.0.4
-packaging == >=22.0
+packaging
 streamlit == 1.22.0
 pywry == 0.5.8
 svglib == 1.5.0
