@@ -1,2 +1,3 @@
 openbb[all]
 sumy
+pywry
