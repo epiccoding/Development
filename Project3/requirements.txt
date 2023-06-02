@@ -39,7 +39,7 @@ python-binance == 1.0.15
 python-i18n == 0.3.9
 thepassiveinvestor == 1.1.2
 pandas-ta == 0.3.14-beta.0
-pyrsistent == 0.19.3
+pyrsistent
 openpyxl == 3.0.9
 pandas-market-calendars == 3.2
 ipympl == 0.8.2
