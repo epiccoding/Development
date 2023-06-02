@@ -53,7 +53,7 @@ finnhub-python == 2.4.10
 linearmodels == 4.25
 ipywidgets == 8.0.2
 Jinja2 == 3.0.3
-ccxt == 1.91.60
+ccxt == 1.92.1
 html5lib == 1.1
 feedparser == 6.0.10
 tokenterminal == 1.0.1
