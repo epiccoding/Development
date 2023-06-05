@@ -10,7 +10,7 @@ def get_close(ticker):
     # Grab closing price data
     end_date = pd.Timestamp(date.today()) + pd.DateOffset(days=1)
     start_date = pd.Timestamp(date.today()) - pd.DateOffset(months=6) # Get a little bit extra in case of weekend
-    close = openbb.stocks.load(symbol=ticker, start_date=start_date, end_date=end_date)
+    close = load(symbol=ticker, start_date=start_date, end_date=end_date)
     close_df = pd.DataFrame({'Date': close.index, 'Open': close['Open'], 'Close': close['Close']})
     close_df['Date'] = pd.to_datetime(close_df['Date']).dt.strftime('%Y-%m-%d')
     return close_df
