@@ -1,4 +1,7 @@
 import streamlit as st
+#Set default streamlit layout to wide
+st.set_page_config(layout="wide")
+
 import pandas as pd
 import matplotlib.pyplot as plt
 plt.style.use('dark_background')
