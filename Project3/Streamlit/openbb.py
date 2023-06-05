@@ -3,6 +3,8 @@ import pandas as pd
 import requests
 import os
 import sys
+from datetime import date
+from datetime import datetime
 from openbb_terminal.stocks.stocks_helper import load
 
 @st.cache_data
