@@ -4,9 +4,8 @@ from datetime import date
 from datetime import datetime
 from openbb_terminal.sdk import openbb
 
-@st.cache_data
-
 # This will use OpenBB to fetch 100 news articles in GoogleNews using the ticker entered
+@st.cache_data
 def get_close(ticker):
     # Grab closing price data
     end_date = pd.Timestamp(date.today()) + pd.DateOffset(days=1)
