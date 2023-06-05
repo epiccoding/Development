@@ -87,7 +87,7 @@ def main():
             st.markdown("## Summarized Articles")
 
             summarized_articles = summarize_articles(news_df)
-            summarized_df = pd.DataFrame(summarized_articles, columns=['Date', 'Summary'])
+            summarized_df = pd.DataFrame(summarized_articles, columns=['Date', 'Summary'], )
             st.dataframe(summarized_df)
         else:
             st.write("No news articles found for the given ticker.")

@@ -1,1 +1,3 @@
-openbb
+streamlit
+pandas
+openbb==3.0.0rc2
