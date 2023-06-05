@@ -6,6 +6,17 @@ import sys
 from datetime import date
 from datetime import datetime
 from openbb_terminal.stocks.stocks_helper import load
+from openbb_terminal.common.news_sdk_helper import news
+
+@st.cache_data
+def get_news(ticker):
+    # OpenBB calling code for news
+    news_stories = news(term=ticker, sort="published")
+    # Creates a Pandas dataframe for the elements captured by OpenBB
+    news_df = pd.DataFrame({'Term': ticker, 'Title': news['title'], 'Date': news['published'], 'Link': news['link']})
+    # Ensures date is formatted conveniently
+    news_df['Date'] = pd.to_datetime(news_df['Date']).dt.strftime('%Y-%m-%d')
+    return news_df
 
 @st.cache_data
 def get_close(ticker):
@@ -46,6 +57,14 @@ def main():
         st.markdown(f"""
             >You're only given a little spark of madness. You mustn't lose it. -**:blue[Robin Williams]**"""
         )
+
+        # This will print out the captured OpenBB data
+        news_df = get_news(ticker)
+        if len(news_df) > 0:
+            st.write(f"Found {len(news_df)} news articles for {ticker}:")
+            st.write(news_df[['Date', 'Title', 'Link']])
+        else:
+            st.write("No news articles found for the given ticker.")
 
 if __name__ == '__main__':
     main()
