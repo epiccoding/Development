@@ -1,19 +1,15 @@
 import streamlit as st
 import pandas as pd
-import requests
-import os
-import sys
+import matplotlib.pyplot as plt
+plt.style.use('dark_background')
 from datetime import date
-from datetime import datetime
 from openbb_terminal.stocks.stocks_helper import load
-from openbb_terminal.common.news_sdk_helper import news
+from openbb_terminal.common.feedparser_model import get_news
 
 @st.cache_data
-def get_news(ticker):
+def news(ticker):
     # OpenBB calling code for news
-    news_stories = news(term=ticker, sort="published")
-    # Creates a Pandas dataframe for the elements captured by OpenBB
-    news_df = pd.DataFrame({'Term': ticker, 'Title': news['title'], 'Date': news['published'], 'Link': news['link']})
+    news_df = get_news(term=ticker, limit=50)
     # Ensures date is formatted conveniently
     news_df['Date'] = pd.to_datetime(news_df['Date']).dt.strftime('%Y-%m-%d')
     return news_df
@@ -50,6 +46,14 @@ def main():
 
             st.sidebar.markdown(f"Currently: <span style='color:{color}; font-weight:bold;'>${current_price:.2f} ({price_change:.2f})</span>", unsafe_allow_html=True)
 
+            st.sidebar.markdown(f"**6 Month Close Price**")
+            fig, ax = plt.subplots()
+            chart_df.plot(x='Date', y='Close', ax=ax)
+            ax.set_xlabel("")
+            ax.set_ylabel("")
+            plt.xticks([])
+            st.sidebar.pyplot(fig)
+
         else:
             st.sidebar.write("No close price to report")
 
@@ -59,10 +63,10 @@ def main():
         )
 
         # This will print out the captured OpenBB data
-        news_df = get_news(ticker)
+        news_df = news(ticker)
         if len(news_df) > 0:
             st.write(f"Found {len(news_df)} news articles for {ticker}:")
-            st.write(news_df[['Date', 'Title', 'Link']])
+            st.write(news_df)
         else:
             st.write("No news articles found for the given ticker.")
 
