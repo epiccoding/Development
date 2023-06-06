@@ -56,7 +56,7 @@ st.sidebar.line_chart(close_df["Close"])
 st.title("Snapshot")
 
 # Column Structure
-col1, col2, col3 = st.columns([2, 1, 3])
+col1, col2 = st.columns([1, 3])
 
 with col1:
     st.subheader("Sentiment")
@@ -68,7 +68,8 @@ with col1:
     else:
         st.write("No messages found")
 
-with col3:
+
+with col2:
     st.subheader("News Articles")
     # NEWS LOGIC
     news_df = get_news(term=ticker, limit=limit)
