@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import os
 import matplotlib.pyplot as plt
 plt.style.use('dark_background')
 
