@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 plt.style.use('dark_background')
@@ -16,6 +17,7 @@ from openbb_terminal.stocks.fundamental_analysis.finnhub_model import get_rating
 from openbb_terminal.common.behavioural_analysis.stocktwits_model import get_bullbear
 from openbb_terminal.common.feedparser_model import get_news
 
+os.environ["API_FINNHUB_KEY"] = st.secrets["API_FINNHUB_KEY"]
 API_FINNHUB_KEY = st.secrets["API_FINNHUB_KEY"]
 set_finnhub_key(key=API_FINNHUB_KEY, persist = True)
 
