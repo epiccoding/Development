@@ -17,7 +17,7 @@ from openbb_terminal.stocks.fundamental_analysis.finnhub_model import get_rating
 from openbb_terminal.common.behavioural_analysis.stocktwits_model import get_bullbear
 from openbb_terminal.common.feedparser_model import get_news
 
-API_FINNHUB_KEY = os.getenv['API_FINNHUB_KEY'] = st.secrets['API_FINNHUB_KEY']
+API_FINNHUB_KEY = st.secrets["API_FINNHUB_KEY"]
 set_finnhub_key(key=API_FINNHUB_KEY, persist = True)
 
 # Begin Code #
