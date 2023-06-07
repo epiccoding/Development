@@ -18,8 +18,6 @@ from openbb_terminal.common.behavioural_analysis.stocktwits_model import get_bul
 from openbb_terminal.common.feedparser_model import get_news
 
 # DotENV Call
-from dotenv import load_dotenv
-load_dotenv('.env')
 API_FINNHUB_KEY = os.getenv('API_FINNHUB_KEY')
 set_finnhub_key(key=API_FINNHUB_KEY, persist = True)
 
@@ -102,7 +100,8 @@ with col1:
     formatted_date = form_date.strftime('%B %Y')
     st.subheader(f"As of {formatted_date}")
     recent_rating_df = rating_df.loc[most_recent_month].reset_index()
-    recent_rating_df['count'] = recent_rating_df.sum(axis=1)
+    valid_columns = recent_rating_df.select_dtypes(include='number').columns
+    recent_rating_df['count'] = recent_rating_df[valid_columns].sum(axis=1)
     recent_rating_df['date'] = most_recent_month
     recent_rating_df = recent_rating_df.rename(columns={'index':'rating'})
     print_ratings_df = pd.DataFrame(recent_rating_df[['rating','count']].set_index('rating'))
