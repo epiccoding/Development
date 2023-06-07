@@ -18,8 +18,6 @@ from openbb_terminal.common.behavioural_analysis.stocktwits_model import get_bul
 from openbb_terminal.common.feedparser_model import get_news
 
 # DotENV Call
-from dotenv import load_dotenv
-load_dotenv('.env')
 API_FINNHUB_KEY = os.getenv('API_FINNHUB_KEY')
 set_finnhub_key(key=API_FINNHUB_KEY, persist = True)
 
