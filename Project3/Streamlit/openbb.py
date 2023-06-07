@@ -19,7 +19,6 @@ from openbb_terminal.common.feedparser_model import get_news
 
 os.environ["API_FINNHUB_KEY"] = st.secrets["API_FINNHUB_KEY"]
 API_FINNHUB_KEY = st.secrets["API_FINNHUB_KEY"]
-set_finnhub_key(key=API_FINNHUB_KEY, persist = True)
 
 # Begin Code #
 # Set default streamlit layout to wide
@@ -94,6 +93,7 @@ with col1:
         st.write("No messages found")
 
     # Found the ratings feature to be an interesting way to incorporate additional sentiment around the stock
+    set_finnhub_key(key=API_FINNHUB_KEY, persist = True)
     rating_df = get_rating_over_time(symbol=ticker).drop('symbol', axis=1).set_index('period')
     most_recent_month = rating_df.index.max()
     form_date = datetime.fromisoformat(most_recent_month)
