@@ -100,7 +100,7 @@ with col1:
     most_recent_month = rating_df.index.max()
     form_date = datetime.fromisoformat(most_recent_month)
     formatted_date = form_date.strftime('%B %Y')
-    st.subheader(f"As of {formatted_date}")
+    st.markdown(f"As of **{formatted_date}** buy/sell ratings:")
     recent_rating_df = rating_df.loc[most_recent_month].reset_index()
     recent_rating_df['count'] = recent_rating_df.sum(axis=1)
     recent_rating_df['date'] = most_recent_month
