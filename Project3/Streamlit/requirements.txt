@@ -1,3 +1,2 @@
 openbb[all]
 streamlit
-yfinance
