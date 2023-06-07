@@ -9,12 +9,16 @@ from datetime import date, timedelta, datetime
 from dateutil.relativedelta import relativedelta
 
 # OpenBB Import Cluster
+from openbb_terminal.keys_model import set_finnhub_key
 from openbb_terminal.stocks.stocks_helper import load
 from openbb_terminal.stocks.options.options_sdk_helper import get_full_option_chain
 from openbb_terminal.stocks.comparison_analysis.sdk_helpers import get_similar
-# from openbb_terminal.stocks.fundamental_analysis.finnhub_model import get_rating_over_time
+from openbb_terminal.stocks.fundamental_analysis.finnhub_model import get_rating_over_time
 from openbb_terminal.common.behavioural_analysis.stocktwits_model import get_bullbear
 from openbb_terminal.common.feedparser_model import get_news
+
+from config import API_FINNHUB_KEY
+set_finnhub_key(key=API_FINNHUB_KEY, persist = True)
 
 # Begin Code #
 # Set default streamlit layout to wide
@@ -89,18 +93,17 @@ with col1:
         st.write("No messages found")
 
     # Found the ratings feature to be an interesting way to incorporate additional sentiment around the stock
-    # rating_df = get_rating_over_time(symbol=ticker).drop('symbol', axis=1).set_index('period')
-    # most_recent_month = rating_df.index.max()
-    # form_date = datetime.fromisoformat(most_recent_month)
-    # formatted_date = form_date.strftime('%B %Y')
-    # st.subheader(f"As of {formatted_date}")
-    # recent_rating_df = rating_df.loc[most_recent_month].reset_index()
-    # valid_columns = recent_rating_df.select_dtypes(include='number').columns
-    # recent_rating_df['count'] = recent_rating_df[valid_columns].sum(axis=1)
-    # recent_rating_df['date'] = most_recent_month
-    # recent_rating_df = recent_rating_df.rename(columns={'index':'rating'})
-    # print_ratings_df = pd.DataFrame(recent_rating_df[['rating','count']].set_index('rating'))
-    # print_ratings_df
+    rating_df = get_rating_over_time(symbol=ticker).drop('symbol', axis=1).set_index('period')
+    most_recent_month = rating_df.index.max()
+    form_date = datetime.fromisoformat(most_recent_month)
+    formatted_date = form_date.strftime('%B %Y')
+    st.subheader(f"As of {formatted_date}")
+    recent_rating_df = rating_df.loc[most_recent_month].reset_index()
+    recent_rating_df['count'] = recent_rating_df.sum(axis=1)
+    recent_rating_df['date'] = most_recent_month
+    recent_rating_df = recent_rating_df.rename(columns={'index':'rating'})
+    print_ratings_df = pd.DataFrame(recent_rating_df[['rating','count']].set_index('rating'))
+    print_ratings_df
     
 with col2:
     # OpenBB has a list of the option contracts and the openInterest around it
@@ -113,8 +116,8 @@ with col3:
     # This function specifically utilizes the Finnhub API to provide similar companies to the highlighted
     # In full transparency I am skeptical of the listed companies to the companies I investigated
     st.subheader("Similar Companies")
-    # similar = get_similar(symbol=ticker, source="Finnhub")
-    # similar
+    similar = get_similar(symbol=ticker, source="Finnhub")
+    similar
 
 st.markdown('''---''')
 
