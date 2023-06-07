@@ -9,17 +9,12 @@ from datetime import date, timedelta, datetime
 from dateutil.relativedelta import relativedelta
 
 # OpenBB Import Cluster
-from openbb_terminal.keys_model import set_finnhub_key
 from openbb_terminal.stocks.stocks_helper import load
 from openbb_terminal.stocks.options.options_sdk_helper import get_full_option_chain
 from openbb_terminal.stocks.comparison_analysis.sdk_helpers import get_similar
 from openbb_terminal.stocks.fundamental_analysis.finnhub_model import get_rating_over_time
 from openbb_terminal.common.behavioural_analysis.stocktwits_model import get_bullbear
 from openbb_terminal.common.feedparser_model import get_news
-
-# DotENV Call
-API_FINNHUB_KEY = os.getenv('API_FINNHUB_KEY')
-set_finnhub_key(key=API_FINNHUB_KEY, persist = True)
 
 # Begin Code #
 # Set default streamlit layout to wide
