@@ -2,6 +2,8 @@ import streamlit as st
 import os
 import requests
 import pandas as pd
+import finnhub
+finnhub_client = finnhub.Client(api_key="cgqaimhr01qmkidmjin0cgqaimhr01qmkidmjing")
 import matplotlib.pyplot as plt
 plt.style.use('dark_background')
 
