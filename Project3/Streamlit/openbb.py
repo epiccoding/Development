@@ -110,7 +110,6 @@ with col2:
     # OpenBB has a list of the option contracts and the openInterest around it
     st.subheader("Options")
     options = get_full_option_chain(symbol=ticker)
-    options.sort_values("volume", inplace=True, ascending=False)
     options
 
 with col3:
