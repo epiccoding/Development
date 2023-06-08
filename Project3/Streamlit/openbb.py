@@ -94,7 +94,7 @@ with col1:
 
     # Found the ratings feature to be an interesting way to incorporate additional sentiment around the stock
     set_finnhub_key(key=API_FINNHUB_KEY, persist = True)
-    rating_df = get_rating_over_time(symbol=ticker).drop('symbol', axis=1).set_index('period')
+    rating_df = get_rating_over_time(symbol=ticker).set_index('period')
     most_recent_month = rating_df.index.max()
     form_date = datetime.fromisoformat(most_recent_month)
     formatted_date = form_date.strftime('%B %Y')
