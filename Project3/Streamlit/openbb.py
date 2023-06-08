@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+import requests
 import pandas as pd
 import matplotlib.pyplot as plt
 plt.style.use('dark_background')
@@ -93,7 +94,24 @@ with col1:
         st.write("No messages found")
 
     # Found the ratings feature to be an interesting way to incorporate additional sentiment around the stock
-    set_finnhub_key(key=API_FINNHUB_KEY, persist = True)
+    def get_rating_over_time(symbol: str) -> pd.DataFrame:
+        url = f"https://finnhub.io/api/v1/stock/recommendation"
+        params = {
+            "symbol": symbol,
+            "token": API_FINNHUB_KEY
+        }
+        
+        response = requests.get(url, params=params)
+        df = pd.DataFrame()
+
+        if response.status_code == 200:
+            if response.json():
+                df = pd.DataFrame(response.json())
+            else:
+                st.write("No ratings over time found", "\n")
+
+        return df
+
     rating_df = get_rating_over_time(symbol=ticker).set_index('period')
     most_recent_month = rating_df.index.max()
     form_date = datetime.fromisoformat(most_recent_month)
