@@ -1,6 +1,5 @@
 import streamlit as st
 import os
-import requests
 import pandas as pd
 import finnhub
 import matplotlib.pyplot as plt
@@ -13,9 +12,7 @@ from dateutil.relativedelta import relativedelta
 # OpenBB Import Cluster
 from openbb_terminal.stocks.stocks_helper import load
 from openbb_terminal.stocks.options.options_sdk_helper import get_full_option_chain
-from openbb_terminal.stocks.comparison_analysis.sdk_helpers import get_similar
-from openbb_terminal.common.behavioural_analysis.stocktwits_model import get_bullbear
-from openbb_terminal.common.feedparser_model import get_news
+from openbb_models.openbb_source import get_news, get_bullbear
 
 os.environ["API_FINNHUB_KEY"] = st.secrets["API_FINNHUB_KEY"]
 API_FINNHUB_KEY = st.secrets["API_FINNHUB_KEY"]
@@ -96,10 +93,12 @@ with col1:
     # Found the ratings feature to be an interesting way to incorporate additional sentiment around the stock
     rating_df = finnhub_client.recommendation_trends(ticker)
     rating_df = pd.DataFrame(rating_df).drop('symbol', axis=1).set_index('period')
+    # Used this to extract the most recent month of reporting for the dashboard
     most_recent_month = rating_df.index.max()
     form_date = datetime.fromisoformat(most_recent_month)
     formatted_date = form_date.strftime('%B %Y')
     st.subheader(f"As of {formatted_date}")
+    # This sorted the ratings by a more appropriate order
     rating_df = rating_df[["strongBuy","buy","hold","sell","strongSell"]]
     recent_rating_df = rating_df.loc[most_recent_month].reset_index()
     valid_columns = recent_rating_df.select_dtypes(include='number').columns
@@ -123,14 +122,14 @@ with col3:
     # This function specifically utilizes the Finnhub API to provide similar companies to the highlighted
     # In full transparency I am skeptical of the listed companies to the companies I investigated
     st.subheader("Similar Companies")
-    similar = get_similar(symbol=ticker, source="Finnhub")
+    similar = finnhub_client.company_peers(symbol=ticker)
     similar
 
 st.markdown('''---''')
 
-# New Segment
-st.subheader("News Articles")
 # NEWS LOGIC
+# News Segment
+st.subheader("News Articles")
 news_df = get_news(term=ticker, limit=limit)
 # Ensures date is formatted convenientlystream
 news_df['Date'] = pd.to_datetime(news_df['Date']).dt.strftime('%Y-%m-%d')
