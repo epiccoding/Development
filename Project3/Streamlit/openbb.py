@@ -3,7 +3,6 @@ import os
 import requests
 import pandas as pd
 import finnhub
-finnhub_client = finnhub.Client(api_key="cgqaimhr01qmkidmjin0cgqaimhr01qmkidmjing")
 import matplotlib.pyplot as plt
 plt.style.use('dark_background')
 
@@ -20,6 +19,7 @@ from openbb_terminal.common.feedparser_model import get_news
 
 os.environ["API_FINNHUB_KEY"] = st.secrets["API_FINNHUB_KEY"]
 API_FINNHUB_KEY = st.secrets["API_FINNHUB_KEY"]
+finnhub_client = finnhub.Client(api_key=API_FINNHUB_KEY)
 
 # Begin Code #
 # Set default streamlit layout to wide
@@ -94,29 +94,13 @@ with col1:
         st.write("No messages found")
 
     # Found the ratings feature to be an interesting way to incorporate additional sentiment around the stock
-    def get_rating_over_time(symbol: str) -> pd.DataFrame:
-        url = f"https://finnhub.io/api/v1/stock/recommendation"
-        params = {
-            "symbol": symbol,
-            "token": API_FINNHUB_KEY
-        }
-        
-        response = requests.get(url, params=params)
-        df = pd.DataFrame()
-
-        if response.status_code == 200:
-            if response.json():
-                df = pd.DataFrame(response.json())
-            else:
-                st.write("No ratings over time found", "\n")
-
-        return df
-
-    rating_df = get_rating_over_time(symbol=ticker).set_index('period')
+    rating_df = finnhub_client.recommendation_trends(ticker)
+    rating_df = pd.DataFrame(rating_df).drop('symbol', axis=1).set_index('period')
     most_recent_month = rating_df.index.max()
     form_date = datetime.fromisoformat(most_recent_month)
     formatted_date = form_date.strftime('%B %Y')
     st.subheader(f"As of {formatted_date}")
+    rating_df = rating_df[["strongBuy","buy","hold","sell","strongSell"]]
     recent_rating_df = rating_df.loc[most_recent_month].reset_index()
     valid_columns = recent_rating_df.select_dtypes(include='number').columns
     recent_rating_df['count'] = recent_rating_df[valid_columns].sum(axis=1)
@@ -124,7 +108,7 @@ with col1:
     recent_rating_df = recent_rating_df.rename(columns={'index':'rating'})
     print_ratings_df = pd.DataFrame(recent_rating_df[['rating','count']].set_index('rating'))
     print_ratings_df
-    
+
 with col2:
     # OpenBB has a list of the option contracts and the openInterest around it
     st.subheader("Options")
