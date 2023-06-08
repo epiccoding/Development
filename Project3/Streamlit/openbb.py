@@ -12,7 +12,8 @@ from dateutil.relativedelta import relativedelta
 # OpenBB Import Cluster
 from openbb_terminal.stocks.stocks_helper import load
 from openbb_terminal.stocks.options.options_sdk_helper import get_full_option_chain
-from openbb_models.openbb_source import get_news, get_bullbear
+from openbb_terminal.common.behavioural_analysis.stocktwits_model import get_bullbear
+from openbb_terminal.common.feedparser_model import get_news
 
 os.environ["API_FINNHUB_KEY"] = st.secrets["API_FINNHUB_KEY"]
 API_FINNHUB_KEY = st.secrets["API_FINNHUB_KEY"]
