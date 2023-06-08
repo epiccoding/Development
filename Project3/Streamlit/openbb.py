@@ -100,7 +100,8 @@ with col1:
     formatted_date = form_date.strftime('%B %Y')
     st.subheader(f"As of {formatted_date}")
     recent_rating_df = rating_df.loc[most_recent_month].reset_index()
-    recent_rating_df['count'] = recent_rating_df.sum(axis=1)
+    valid_columns = recent_rating_df.select_dtypes(include='number').columns
+    recent_rating_df['count'] = recent_rating_df[valid_columns].sum(axis=1)
     recent_rating_df['date'] = most_recent_month
     recent_rating_df = recent_rating_df.rename(columns={'index':'rating'})
     print_ratings_df = pd.DataFrame(recent_rating_df[['rating','count']].set_index('rating'))
@@ -110,6 +111,7 @@ with col2:
     # OpenBB has a list of the option contracts and the openInterest around it
     st.subheader("Options")
     options = get_full_option_chain(symbol=ticker)
+    options.sort_values("volume", inplace=True, ascending=False)
     options
 
 with col3:
