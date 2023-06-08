@@ -93,9 +93,13 @@ with col1:
 
     # Found the ratings feature to be an interesting way to incorporate additional sentiment around the stock
     def get_rating_over_time(symbol: str) -> pd.DataFrame:
-        response = requests.Response(
-            f"https://finnhub.io/api/v1/stock/recommendation?symbol={ticker}&token={API_FINNHUB_KEY}"
-        )
+        url = f"https://finnhub.io/api/v1/stock/recommendation"
+        params = {
+            "symbol": symbol,
+            "token": API_FINNHUB_KEY
+        }
+        
+        response = requests.get(url, params=params)
         df = pd.DataFrame()
 
         if response.status_code == 200:
