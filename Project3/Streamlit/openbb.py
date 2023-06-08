@@ -113,8 +113,11 @@ with col2:
     # OpenBB has a list of the option contracts and the openInterest around it
     st.subheader("Options")
     options = get_full_option_chain(symbol=ticker)
-    options.sort_values("volume", inplace=True, ascending=False)
-    options
+    if not options.empty:
+        options.sort_values("volume", inplace=True, ascending=False)
+        options
+    else:
+        st.write(f"No options to report for {ticker}")
 
 with col3:
     # This function specifically utilizes the Finnhub API to provide similar companies to the highlighted
