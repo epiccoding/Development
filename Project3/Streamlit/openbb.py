@@ -9,8 +9,16 @@ from datetime import date, timedelta, datetime
 from dateutil.relativedelta import relativedelta
 
 # OpenBB Import Cluster
+from openbb_terminal.keys_model import set_finnhub_key
 from openbb_terminal.stocks.stocks_helper import load
+from openbb_terminal.stocks.options.options_sdk_helper import get_full_option_chain
+from openbb_terminal.stocks.comparison_analysis.sdk_helpers import get_similar
+from openbb_terminal.stocks.fundamental_analysis.finnhub_model import get_rating_over_time
+from openbb_terminal.common.behavioural_analysis.stocktwits_model import get_bullbear
 from openbb_terminal.common.feedparser_model import get_news
+
+os.environ["API_FINNHUB_KEY"] = st.secrets["API_FINNHUB_KEY"]
+API_FINNHUB_KEY = st.secrets["API_FINNHUB_KEY"]
 
 # Begin Code #
 # Set default streamlit layout to wide
@@ -62,6 +70,58 @@ with st.sidebar:
     st.line_chart(close_df["Close"])
 
 # MAIN BODY #
+# Header
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.title("Snapshot")
+
+with col2:
+    st.markdown("[![github](https://img.icons8.com/?size=128&id=52539&format=png)](https://github.com/epiccoding/Bootcamp)")
+st.markdown("---")
+
+# Main Content
+col1, col2, col3 = st.columns([1, 2, 1])
+with col1:
+    # Sentiment, what would I be without it?
+    st.subheader("Sentiment")
+    watchlist_count, n_cases, n_bull, n_bear = get_bullbear(symbol=ticker)
+    if n_cases > 0:
+        st.markdown(f"\nLast {n_cases} sentiment messages:")
+        st.write(f"Bullish: :green[{round(100*n_bull/n_cases, 2)}]%")
+        st.write(f"Bearish: :red[{round(100*n_bear/n_cases, 2)}]%")
+    else:
+        st.write("No messages found")
+
+    # Found the ratings feature to be an interesting way to incorporate additional sentiment around the stock
+    set_finnhub_key(key=API_FINNHUB_KEY, persist = True)
+    rating_df = get_rating_over_time(symbol=ticker).drop('symbol', axis=1).set_index('period')
+    most_recent_month = rating_df.index.max()
+    form_date = datetime.fromisoformat(most_recent_month)
+    formatted_date = form_date.strftime('%B %Y')
+    st.subheader(f"As of {formatted_date}")
+    recent_rating_df = rating_df.loc[most_recent_month].reset_index()
+    recent_rating_df['count'] = recent_rating_df.sum(axis=1)
+    recent_rating_df['date'] = most_recent_month
+    recent_rating_df = recent_rating_df.rename(columns={'index':'rating'})
+    print_ratings_df = pd.DataFrame(recent_rating_df[['rating','count']].set_index('rating'))
+    print_ratings_df
+    
+with col2:
+    # OpenBB has a list of the option contracts and the openInterest around it
+    st.subheader("Options")
+    options = get_full_option_chain(symbol=ticker)
+    options.sort_values("volume", inplace=True, ascending=False)
+    options
+
+with col3:
+    # This function specifically utilizes the Finnhub API to provide similar companies to the highlighted
+    # In full transparency I am skeptical of the listed companies to the companies I investigated
+    st.subheader("Similar Companies")
+    similar = get_similar(symbol=ticker, source="Finnhub")
+    similar
+
+st.markdown('''---''')
+
 # New Segment
 st.subheader("News Articles")
 # NEWS LOGIC
