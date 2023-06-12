@@ -3,6 +3,7 @@ import os
 import pandas as pd
 import finnhub
 import matplotlib.pyplot as plt
+import altair as alt
 plt.style.use('dark_background')
 
 # Various Datetime Conveniences
@@ -10,7 +11,7 @@ from datetime import date, timedelta, datetime
 from dateutil.relativedelta import relativedelta
 
 # OpenBB Import Cluster
-from openbb_terminal.stocks.stocks_helper import load
+from openbb_terminal.stocks.stocks_helper import load, display_candle
 from openbb_terminal.stocks.options.options_sdk_helper import get_full_option_chain
 from openbb_terminal.common.behavioural_analysis.stocktwits_model import get_bullbear
 from openbb_terminal.common.feedparser_model import get_news
@@ -27,14 +28,15 @@ st.set_page_config(
         layout="wide",
 )
 
+default_start = (date.today() - relativedelta(months=6)).strftime('%Y-%m-%d')
+default_end = (date.today() + timedelta(days=1)).strftime('%Y-%m-%d')
+
 def user_input():
     # User input to select the Ticker for the view
     ticker = st.sidebar.text_input(f"Enter a Ticker Symbol", value="AAPL")
     # Choose how many articles you want, default 25
     limit = st.sidebar.slider('How many articles?', 0, 100, 25)
     # Time logic
-    default_start = (date.today() - relativedelta(months=6)).strftime('%Y-%m-%d')
-    default_end = (date.today() + timedelta(days=1)).strftime('%Y-%m-%d')
     start = st.sidebar.date_input("Start Date", datetime.strptime(default_start, '%Y-%m-%d').date())
     end = st.sidebar.date_input("End Date", datetime.strptime(default_end, '%Y-%m-%d').date())
     return ticker, limit, start, end
@@ -66,7 +68,7 @@ with st.sidebar:
     else:
         st.write("No close price to report")
     # Simple line chart for the "Close" in our Load
-    st.line_chart(close_df["Close"])
+    st.line_chart(close_df["Close"], y=None)
 
 # MAIN BODY #
 # Header
@@ -115,7 +117,11 @@ with col2:
     options = get_full_option_chain(symbol=ticker)
     if not options.empty:
         options.sort_values("volume", inplace=True, ascending=False)
-        options
+        options["breakEven"] = options.apply(lambda row: row["strike"] + row["lastPrice"] if row["optionType"] == "call"
+        else row["strike"] - row["lastPrice"], axis=1)
+        options = options[["optionType","strike","breakEven","expiration","volume","lastPrice","bid","ask","openInterest"]]
+        # Display the table
+        st.write(options)
     else:
         st.write(f"No options to report for {ticker}")
 
