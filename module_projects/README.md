@@ -20,3 +20,9 @@
 [Module13: Neural Networks](Module-13-Neaural_Networks)
 
 [Module14: Algorithmic Trading](Module-14-Algorithmic_Trading)
+
+[Module18: Blockchain](Module-18-Blockchain)
+
+[Module19: Blockchain_Wallets](Module-19-Blockchain_Wallets)
+
+[Module20: Solidity](Module-20-Solidity)

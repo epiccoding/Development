@@ -2,16 +2,17 @@
 
 <a name="readme-top"></a>
 <!-- TABLE OF CONTENTS -->
-<details>
+
   <summary>Table of Contents</summary>
-  <ol>
     <li><a href="/module_projects/">Module Projects</a></li>
-    <li><a href="#about-me">About Me</a></li>
+    <details>
+      <summary><a href="#about-me">About Me</a></summary>
+      <li><a href="/Resume/">Resume</a></li>
+    </details>
     <li><a href="#built-with">Experience With</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+
 <br>
 
 ## About Me
@@ -22,16 +23,17 @@ I have experience in banking and investments through my 4 years as a licensed fi
 
 My goals are to continue advancing within the business analytics space and the whole data community.  This class has been tremendously helpful in providing many of the foundational skills I needed to feel confident in the tools I use daily.
 
+<a href="/Resume/">Resume</a>
 
 ## Experience With
 ---
 During this class we were exposed to a wide variety of tools and resources.  Some of the highlights:
 
-* ![Python](https://img.icons8.com/?size=40&id=13441&format=png) Python
-* ![SQL](https://img.icons8.com/?size=40&id=m4jPUWKxN9UY&format=png) SQL
-* ![Jupyter](https://img.icons8.com/?size=40&id=J0SgMWzAxqFj&format=png) Jupyter
-* ![Blockchain](https://img.icons8.com/?size=40&id=24460&format=png) Blockchain
-* ![Machine Learning](https://img.icons8.com/?size=40&id=IM1zmzuzvwiu&format=png) Machine Learning
+* Python
+* SQL
+* Jupyter
+* Blockchain
+* Machine Learning
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
