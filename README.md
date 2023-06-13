@@ -3,7 +3,7 @@
 <a name="readme-top"></a>
 <!-- TABLE OF CONTENTS -->
 
-  <summary>Table of Contents</summary>
+  Table of Contents
     <li><a href="/module_projects/">Module Projects</a></li>
     <li><a href="#about-me">About Me</a></li>
     <li><a href="#built-with">Experience With</a></li>
