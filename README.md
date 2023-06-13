@@ -5,10 +5,7 @@
 
   <summary>Table of Contents</summary>
     <li><a href="/module_projects/">Module Projects</a></li>
-    <details>
-      <summary><a href="#about-me">About Me</a></summary>
-      <li><a href="/Resume/">Resume</a></li>
-    </details>
+    <li><a href="#about-me">About Me</a></li>
     <li><a href="#built-with">Experience With</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -23,7 +20,7 @@ I have experience in banking and investments through my 4 years as a licensed fi
 
 My goals are to continue advancing within the business analytics space and the whole data community.  This class has been tremendously helpful in providing many of the foundational skills I needed to feel confident in the tools I use daily.
 
-<a href="/Resume/">Resume</a>
+<a href="epiccoding.github.io">Resume</a>
 
 ## Experience With
 ---
