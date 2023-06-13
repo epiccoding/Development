@@ -20,7 +20,7 @@ I have experience in banking and investments through my 4 years as a licensed fi
 
 My goals are to continue advancing within the business analytics space and the whole data community.  This class has been tremendously helpful in providing many of the foundational skills I needed to feel confident in the tools I use daily.
 
-<a href="epiccoding.github.io">Resume</a>
+<a href="https://epiccoding.github.io">Resume</a>
 
 ## Experience With
 ---
