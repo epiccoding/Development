@@ -1,4 +1,4 @@
-# Bootcamp
+# Welcome
 
 <a name="readme-top"></a>
 <!-- TABLE OF CONTENTS -->
