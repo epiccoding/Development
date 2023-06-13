@@ -12,8 +12,9 @@
 
 <br>
 
-## About Me
 ---
+## About Me
+
 My name is Eli, I'm currently a business analyst with PNC Bank.  I am a tech enthusiast and excited to continue learning more about the FinTech environment.
 
 I have experience in banking and investments through my 4 years as a licensed financial specialist and 5 years as a bank relationship manager.
@@ -22,8 +23,9 @@ My goals are to continue advancing within the business analytics space and the w
 
 <a href="https://epiccoding.github.io">Resume</a>
 
-## Experience With
 ---
+## Experience With
+
 During this class we were exposed to a wide variety of tools and resources.  Some of the highlights:
 
 * Python
@@ -38,16 +40,17 @@ During this class we were exposed to a wide variety of tools and resources.  Som
 
 
 <!-- CONTACT -->
-## Contact
 ---
+## Contact
+
  [![LinkedIn](https://img.icons8.com/?size=48&id=13930&format=png)](https://www.linkedin.com/in/elipickhart/) 
 
 
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
 ---
+## Acknowledgments
 I want to take this opportunity to acknowledge a few key resources during this class:
 
 * [Dave Melillo](https://www.linkedin.com/in/davemelillojr/) - Fearless teacher throughout the course
