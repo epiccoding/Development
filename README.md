@@ -26,17 +26,16 @@ My goals are to continue advancing within the business analytics space and the w
 ---
 ## Experience With
 
-During this class we were exposed to a wide variety of tools and resources.  Some of the highlights:
+During the Rutgers Bootcamp we were exposed to a wide variety of tools and resources.  Some of the highlights:
 
-* Python
-* SQL
-* Jupyter
-* Blockchain
-* Machine Learning
-
+| Financial Fundamentals | Blockchain and Cryptocurrency | Machine Learning Applications in Finance | Programming and Financial Libraries |
+| --- | --- | --- | --- | 
+| Time-Series Analysis | Solidity | Algorithmic Trading | Python |
+| Financial Ratios | Ethereum | Regressions | Amazon Web Services |
+| Financial Analysis | Smart Contracts | Algorithmic Trading | SQL |
+| Financial Modeling | Ganache | AWS SageMaker | APIs |
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- CONTACT -->
