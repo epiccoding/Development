@@ -18,10 +18,9 @@
 
 I appreciate you stopping by.  My name is Eli, currently a Business Analyst at PNC Bank helping to analyze and identify trends in complaint data from a variety of lines-of-business within the organization.  This repository has become my primary source to corall my various projects I am actively working on.  Additionally, you will find a variety of the module projects I worked on during my time in the Rutgers FinTech Bootcamp from 2023.  You can find the capstone to this project <a href="https://project3-openbb-launch.streamlit.app">HERE</a>
 
-My early career focused on the banking and investments sectory through my 4 years as a licensed financial specialist and 5 years as a banking relationship manager.  In November 2021 I made the crucial decision to shift gears and focus on my passion for technology.  This has had a monumental impact on my productivity and desire to learn.
+My early career focused on the banking and investments sector through my 4 years as a licensed financial specialist and 5 years as a banking relationship manager.  In November 2021 I made the crucial decision to shift gears and focus on my passion for technology.  This has had a monumental impact on my productivity and desire to learn.
 
 My goals are to continue advancing within the business analytics space and the whole data community.  Thank you again for your time and please feel free to connect with me.
-
 
 ---
 ## Experience With
